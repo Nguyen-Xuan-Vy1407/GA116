@@ -1,7 +1,44 @@
 ﻿@page "/"
 
+@rendermode InteractiveServer
+
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+<MudText>Count =@Count</MudText>
+<MudButton variant="Variant.Filled" OnClick="TestClick">test</MudButton>
+<MudTextField @bind-Value="Name" Label="Outlined" Variant="Variant.Outlined"></MudTextField>
+<MudButton Variant="Variant.Filled"onclick="Showname">Test Name</MudButton>
+<MudNumericField @bind-Value="X" Label="X" Variant="Variant.Text"></MudNumericField>
+
+<MudNumericField @bind-Value="Y" Label="Y" Variant="Variant.Text"></MudNumericField>
+<MudButton Variant="Variant.Filled" onclick="Tong">...</MudButton>
+
+<div style="font-size:40px;">
+    @X +@Y = @tong
+</div>
+@code{
+    int Count = 0;
+    String Name = "";
+    int X ;
+    int Y;
+    int tong;
+    private void TestClick()
+    {
+        Count+=2;
+        Console.WriteLine($"{DateTime.Now}:test button clicked");
+    }
+    private void Showname(){
+        Console.WriteLine($"Name={Name}");
+    }
+    private void Tinhtong(){
+        Console.WriteLine($"x={X}");
+        Console.WriteLine($"y={Y}");
+
+    }
+    private void Tong(){
+        tong = X + Y;
+    }
+}
